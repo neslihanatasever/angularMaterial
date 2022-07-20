@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {FormBuilder} from "@angular/forms";
 
 
 @Component({
@@ -7,10 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angularMaterial';
-  myForm: any;
+  constructor(private formBuilder: FormBuilder) {}
 
-  submitForm() {
-
+  profileForm = this.formBuilder.group({
+    firstname: [''],
+    lastname: [''],
+    address: [''],
+    dob: [''],
+    gender: ['']
+  });
+  saveForm() {
+    console.log('Form data is ', this.profileForm.value);
   }
 }

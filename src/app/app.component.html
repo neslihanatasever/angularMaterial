@@ -1,40 +1,64 @@
-<!--<form class="m-5">-->
-<!--  <div class="form-group">-->
-<!--    <label for="username">Kullanıcı Adı</label>-->
-<!--    <input type="text" class="form-control" id="username" placeholder="Enter Username">-->
-<!--  </div>-->
-<!--  <div class="form-group">-->
-<!--    <label for="password">Şifre</label>-->
-<!--    <input type="password" class="form-control" id="password" placeholder="Password">-->
-<!--  </div>-->
-<!--  <div class="form-group form-check">-->
-<!--    <input type="checkbox" class="form-check-input" id="approve">-->
-<!--    <label for="approve" class="form-check-label">Okudum, Onaylıyorum</label>-->
-<!--  </div>-->
-<!--  <button type="submit" class="btn btn-primary">Kayıt Ol</button>-->
-<!--</form>-->
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
 
-<!--<mat-slider min="1" max="100" step="1" value="50"></mat-slider>-->
+<form [formGroup]="profileForm" class="form-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Profile Information</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class=" col-md-6">
+          <mat-form-field  class="full-width">
+            <input formControlName="firstname" matInput placeholder="first name">
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="full-width">
+            <input formControlName="lastname" matInput placeholder="last name">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field class="full-width">
+            <textarea formControlName="address" matInput placeholder="address"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 top-padding">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Select DOB</mat-label>
+            <input formControlName="dob" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-radio-group formControlName="gender" class="margin-left">
+            <mat-radio-button value="male"> Male</mat-radio-button>
+            <mat-radio-button value="female"> Female</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button  (click)="saveForm()" mat-raised-button color="primary">Save</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
 
-<!--<div class=”container”>-->
-<!--  <button class=”btn btn-success”>Bootstrap Demo</button>-->
-<!--</div>-->
-
-<mat-sidenav-container>
-  <mat-sidenav-content>
-    <form [formGroup]="myForm" (ngSubmit)="submitForm()"></form>
-    <mat-form-field class="one">
-      <input matInput placeholder="Name" formControlName="name">
-    </mat-form-field>
-
-    <mat-form-field class="two">
-      <input matInput placeholder="Email" formControlName="email" >
-    </mat-form-field>
-
-
-
-
-  </mat-sidenav-content>
-</mat-sidenav-container>
 
 <router-outlet></router-outlet>
